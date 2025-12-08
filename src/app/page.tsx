@@ -10,13 +10,10 @@ export const metadata: Metadata = {
   // URL Base para que las imágenes de redes sociales funcionen
   metadataBase: new URL("https://www.casonaculipran.cl"), 
 
-  // Título que aparece en la pestaña del navegador y en Google (Azul)
+  // Título optimizado
   title: "Arriendo de Parcela con Piscina en Melipilla | Casona Culiprán",
-  
-  // Descripción que aparece debajo del título en Google
   description: "Disfruta de un día de campo inolvidable. Arriendo de parcela exclusiva con piscina, quincho y áreas verdes para eventos, matrimonios y paseos de curso en Melipilla.",
   
-  // Palabras clave para buscadores
   keywords: [
     "arriendo parcela", 
     "parcela con piscina", 
@@ -27,7 +24,17 @@ export const metadata: Metadata = {
     "casona culipran"
   ],
 
-  // Configuración para cuando comparten tu link en WhatsApp, Facebook, etc.
+  // --- NUEVO: CONFIGURACIÓN DEL LOGO (FAVICON) ---
+  icons: {
+    icon: [
+      { url: '/images/fotos/logo.png' },
+      { url: '/images/fotos/logo.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/images/fotos/logo.png' }, // Para iPhone/iPad
+    ],
+  },
+
   openGraph: {
     title: "Casona Culiprán | Tu Evento en el Mejor Entorno Natural",
     description: "Parcela exclusiva en Melipilla con piscina, quincho y 5.600m² de parque. Ideal para familias y empresas.",
@@ -35,7 +42,7 @@ export const metadata: Metadata = {
     siteName: "Casona Culiprán",
     images: [
       {
-        url: "/images/Fotos JPG/Piscina Terraza.jpg", // Asegúrate de que esta imagen exista
+        url: "/images/fotos/piscina.jpg", 
         width: 1200,
         height: 630,
         alt: "Piscina y Terraza Casona Culiprán",
@@ -45,13 +52,11 @@ export const metadata: Metadata = {
     type: "website",
   },
   
-  // Permisos para los robots de Google
   robots: {
     index: true,
     follow: true,
   },
   
-  // URL canónica para evitar contenido duplicado
   alternates: {
     canonical: "https://www.casonaculipran.cl",
   }
@@ -60,30 +65,19 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#ebe0ca]">
-      
-      {/* 1. HERO (Portada Principal) */}
       <Hero />
-
-      {/* 2. SOBRE NOSOTROS */}
       <section id="about" className="scroll-mt-32">
         <AboutSection />
       </section>
-
-      {/* 3. GALERÍA PREVIA */}
       <section id="gallery" className="scroll-mt-32">
         <GalleryPreview />
       </section>
-
-      {/* 4. RESEÑAS */}
       <section id="reviews" className="scroll-mt-32">
         <Testimonials />
       </section>
-
-      {/* 5. SECCIÓN FINAL (CTA) */}
       <section>
         <ContactSection />
       </section>
-
     </main>
   );
 }
