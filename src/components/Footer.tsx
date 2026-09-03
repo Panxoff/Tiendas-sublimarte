@@ -1,127 +1,124 @@
 import Link from "next/link";
-import Image from "next/image";
-import { FaInstagram, FaFacebookF, FaAirbnb, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+
+/* =========================================================
+   PALETA — definida localmente en este archivo
+========================================================= */
+const COLOR = {
+  ink: "#1C1B18",
+  paper: "#ECEDE7",
+  muted: "#8A897F",
+  line: "#3A3934",
+  cyan: "#00AEEF",
+  magenta: "#E6007E",
+  yellow: "#FFC800",
+};
+
+const COLUMNS = [
+  {
+    title: "Tienda",
+    links: [
+      { label: "Catálogo completo", href: "/catalogo" },
+      { label: "Poleras", href: "/catalogo?categoria=poleras" },
+      { label: "Hoodies", href: "/catalogo?categoria=hoodies" },
+      { label: "Jockeys", href: "/catalogo?categoria=jockeys" },
+      { label: "Tote bags", href: "/catalogo?categoria=tote-bags" },
+    ],
+  },
+  {
+    title: "Ayuda",
+    links: [
+      { label: "Cómo funciona", href: "/#proceso" },
+      { label: "Preguntas frecuentes", href: "/#faq" },
+      { label: "Pedidos para empresas", href: "/#empresas" },
+      { label: "Contacto", href: "/contacto" },
+    ],
+  },
+  {
+    title: "SublimArte",
+    links: [
+      { label: "Sobre nosotros", href: "/nosotros" },
+      { label: "Términos y condiciones", href: "/terminos" },
+      { label: "Política de envíos", href: "/envios" },
+    ],
+  },
+];
+
+function InstagramIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+    </svg>
+  );
+}
 
 export default function Footer() {
   return (
-    <footer id="contact" className="bg-[#ebe0ca] pt-10 pb-6 text-dark border-t border-dark/5 font-sans">
-      <div className="container mx-auto px-4">
-        
-        {/* PARTE SUPERIOR: 3 Columnas (Contacto - Logo - Redes) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center mb-8">
-          
-          {/* 1. CONTACTO (Izquierda) */}
-          <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-3 order-2 md:order-1">
-            <h4 className="text-sm font-bold uppercase tracking-widest text-gray-500 mb-1">Contacto</h4>
-            
-            {/* Ubicación */}
-            <div className="flex items-center gap-2 text-sm text-gray-700">
-              <FaMapMarkerAlt className="text-primary" />
-              <span>Cam. Las Chilcas, Melipilla</span>
+    <footer style={{ backgroundColor: COLOR.ink, color: COLOR.paper }}>
+      <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
+        <div className="grid gap-12 lg:grid-cols-[1.2fr_2fr]">
+          {/* Marca */}
+          <div className="max-w-xs">
+            <div className="flex items-center gap-[3px]">
+              <span className="h-2 w-2 rounded-full" style={{ backgroundColor: COLOR.cyan }} />
+              <span className="h-2 w-2 rounded-full" style={{ backgroundColor: COLOR.magenta }} />
+              <span className="h-2 w-2 rounded-full" style={{ backgroundColor: COLOR.yellow }} />
             </div>
-            
-            {/* Teléfono */}
-            <div className="flex items-center gap-2 text-sm text-gray-700">
-              <FaPhoneAlt className="text-primary" />
-              <span>+56 9 3068 0534</span>
-            </div>
-
-            {/* Correo Principal */}
-            <div className="flex items-center gap-2 text-sm text-gray-700">
-              <FaEnvelope className="text-primary" />
-              <a href="mailto:reservascasonaculipran@gmail.com" className="hover:text-primary transition-colors">
-                reservascasonaculipran@gmail.com
-              </a>
-            </div>
-          </div>
-
-          {/* 2. LOGO (Centro) */}
-          <div className="flex justify-center order-1 md:order-2">
-            <Link href="/">
-              <Image 
-                src="/images/fotos/logo.png" 
-                alt="Casona Culiprán" 
-                width={180} 
-                height={180} 
-                className="h-24 w-auto object-contain hover:scale-105 transition-transform duration-300" 
-              />
-            </Link>
-          </div>
-
-          {/* 3. REDES SOCIALES (Derecha) */}
-          <div className="flex flex-col items-center md:items-end gap-3 order-3">
-            <span className="text-sm font-bold uppercase tracking-widest text-gray-500 mb-1">Síguenos</span>
-            <div className="flex gap-3">
-              
-              {/* INSTAGRAM */}
-              <a 
-                href="https://www.instagram.com/casonaculipran/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="bg-white p-3 rounded-full text-dark hover:bg-primary hover:text-dark transition shadow-sm transform hover:-translate-y-1"
-                aria-label="Instagram"
-              >
-                <FaInstagram size={18} />
-              </a>
-
-              {/* FACEBOOK */}
-              <a 
-                href="https://www.facebook.com/people/Arriendo-Parcela-con-Piscina-Melipilla/61578386309264/#" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="bg-white p-3 rounded-full text-dark hover:bg-blue-600 hover:text-white transition shadow-sm transform hover:-translate-y-1"
-                aria-label="Facebook"
-              >
-                <FaFacebookF size={18} />
-              </a>
-
-              {/* AIRBNB */}
-              <a 
-                href="https://www.airbnb.cl/rooms/1411230218446296432?search_mode=regular_search&adults=1&check_in=2025-12-14&check_out=2025-12-19&children=0&infants=0&pets=0&source_impression_id=p3_1763678548_P38IC9pzR1GXAQly&previous_page_section_name=1000&federated_search_id=36073bb0-b812-42cd-827f-c97d91b5662d" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="bg-white p-3 rounded-full text-dark hover:bg-[#FF5A5F] hover:text-white transition shadow-sm transform hover:-translate-y-1"
-                aria-label="Airbnb"
-              >
-                <FaAirbnb size={18} />
-              </a>
-
-            </div>
-          </div>
-        </div>
-
-        {/* PARTE INFERIOR */}
-        <div className="flex flex-col items-center w-full">
-            
-            {/* Línea divisoria y contenido inferior */}
-            <div className="border-t border-dark/10 pt-6 flex flex-col lg:flex-row justify-between items-center gap-4 text-center lg:text-left w-full">
-            
-            {/* Copyright */}
-            <p className="text-xs text-gray-500 font-medium w-full lg:w-1/2 lg:text-left">
-                &copy; {new Date().getFullYear()} Casona Culiprán. Todos los derechos reservados.
+            <h3 className="mt-4 text-2xl font-bold tracking-[-0.03em]" style={{ fontFamily: "var(--font-display)" }}>
+              SublimArte
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed" style={{ color: COLOR.muted }}>
+              Estampado DTF a color completo, con fidelidad de imprenta y sin
+              mínimos de pedido. Tu diseño, prensado en tela.
             </p>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 inline-flex h-10 w-10 items-center justify-center rounded-full border transition-colors hover:bg-white/5"
+              style={{ borderColor: COLOR.line }}
+              aria-label="Instagram"
+            >
+              <InstagramIcon className="h-4 w-4" />
+            </a>
+          </div>
 
-            {/* Dev Credit + Mensaje Hecho con Amor */}
-            <div className="flex flex-col items-center lg:items-end w-full lg:w-1/2 space-y-1">
-                
-                <p className="text-xs text-gray-400 flex items-center gap-1">
-                    Hecho con amor para eventos inolvidables <span className="text-red-500 animate-pulse">❤</span>
+          {/* Columnas de navegación */}
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
+            {COLUMNS.map((col) => (
+              <div key={col.title}>
+                <p className="text-[11px] font-bold uppercase tracking-[0.14em]" style={{ color: COLOR.muted }}>
+                  {col.title}
                 </p>
-
-                {/* CAMBIO: Se aumentó el tamaño de text-[10px] a text-xs para igualar */}
-                <p className="text-xs text-gray-400 font-normal"> 
-                Dev: Francisco Polanco
-                </p>
-                
-                {/* CAMBIO: Se aumentó el tamaño de text-[10px] a text-xs y el icono a size={12} */}
-                <a href="mailto:Fpolanco543@gmail.com" className="text-xs text-gray-400 hover:text-primary transition-colors flex items-center gap-1">
-                    <FaEnvelope size={12} /> Fpolanco543@gmail.com
-                </a>
-            </div>
-            
-            </div>
+                <ul className="mt-4 flex flex-col gap-3">
+                  {col.links.map((link) => (
+                    <li key={link.href}>
+                      <Link href={link.href} className="text-sm transition-opacity hover:opacity-70">
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
 
+        {/* Barra inferior */}
+        <div
+          className="mt-14 flex flex-col items-start justify-between gap-4 border-t pt-6 text-xs md:flex-row md:items-center"
+          style={{ borderColor: COLOR.line, color: COLOR.muted }}
+        >
+          <span>© {new Date().getFullYear()} SublimArte. Todos los derechos reservados.</span>
+          <div className="flex items-center gap-3 font-mono uppercase tracking-widest text-[10px]">
+            <span>Webpay</span>
+            <span style={{ color: COLOR.line }}>·</span>
+            <span>Transferencia</span>
+            <span style={{ color: COLOR.line }}>·</span>
+            <span>Mercado Pago</span>
+          </div>
+        </div>
       </div>
     </footer>
   );

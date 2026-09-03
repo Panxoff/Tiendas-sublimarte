@@ -1,31 +1,129 @@
 @import "tailwindcss";
 
 @theme {
-  /* --- TUS COLORES DE AURA'S --- */
-  --color-primary: #2BE2BF;    
-  --color-dark: #151515;       
-  
-  /* COLORES DE FONDO */
-  --color-cream: #FAF3E0;      
-  --color-sand: #ebe0ca;       
-  
-  /* --- TUS IMÁGENES DE FONDO --- */
-  
-  /* 1. BANNER INICIO (Hero): Usamos la Piscina para impactar */
-  --image-hero-gradient: linear-gradient(100deg, #000000 0%, #00000020 100%), url('/images/Fotos JPG/Piscina Terraza.jpg');
-  
-  /* 2. CABECERA RESERVAS: Usamos el Quincho para variar */
-  --image-booking-header: linear-gradient(100deg, #151515c0 0%, #15151590 100%), url('/images/Quincho.jpg');
+  /* PALETA MESA DE LUZ & TINTAS */
+  --color-paper: #ECEDE7;
+  --color-panel: #E1E3D9;
+  --color-ink: #1C1B18;
+  --color-muted: #6B6A63;
+  --color-line: #C7C9BD;
+
+  --color-cyan: #00AEEF;
+  --color-magenta: #E6007E;
+  --color-yellow: #FFC800;
+
+  /* FUENTES */
+  --font-display: var(--font-display), "Arial Narrow", sans-serif;
+  --font-body: var(--font-body), sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, monospace;
 }
 
+/* Reset y configuración base */
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--color-cream); 
-  color: var(--color-dark);
-  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+}
+
+/* ---------- Detalles visuales y utilidades custom ---------- */
+
+::selection {
+  background: var(--color-magenta);
+  color: var(--color-paper);
+}
+
+.display-tight {
+  letter-spacing: -0.055em;
+  line-height: 0.9;
+}
+
+.technical-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.cmyk-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+}
+
+.cmyk-dot-c {
+  background: var(--color-cyan);
+}
+
+.cmyk-dot-m {
+  background: var(--color-magenta);
+}
+
+.cmyk-dot-y {
+  background: var(--color-yellow);
+}
+
+/* Papel / superficie de trabajo */
+.paper-grid {
+  background-image:
+    linear-gradient(
+      to right,
+      rgba(28, 27, 24, 0.045) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(28, 27, 24, 0.045) 1px,
+      transparent 1px
+    );
+  background-size: 40px 40px;
+}
+
+/* Marco técnico */
+.technical-border {
+  border: 1px solid var(--color-line);
+  position: relative;
+}
+
+.technical-border::before,
+.technical-border::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-color: var(--color-ink);
+  opacity: 0.3;
+}
+
+.technical-border::before {
+  left: -1px;
+  top: -1px;
+  border-left: 1px solid;
+  border-top: 1px solid;
+}
+
+.technical-border::after {
+  right: -1px;
+  bottom: -1px;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+}
+
+/* Hover sutil */
+.hover-lift {
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-ink);
+  box-shadow: 0 10px 30px rgba(28, 27, 24, 0.08);
 }
